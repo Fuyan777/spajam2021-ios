@@ -1,0 +1,18 @@
+name: spajam-ios
+fileGroups:
+  - config
+configFiles:
+  Debug: config/Debug.xcconfig
+  Release: config/Release.xcconfig
+targets:
+  spajam-ios:
+    type: application
+    platform: iOS
+    sources: spajam-ios
+    configFiles:
+      Debug: config/spajam-ios-Debug.xcconfig
+      Release: config/spajam-ios-Release.xcconfig
+    settings:
+      CURRENT_PROJECT_VERSION: 1
+      base:
+        OTHER_LDFLAGS: $(inherited) $(OTHER_LDFLAGS) -ObjC
