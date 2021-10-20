@@ -2,10 +2,10 @@ PRODUCT_NAME := spajam-ios
 
 .PHONY: install
 install:
-		$(make) bundle_install
-		$(make) mint-bootstrap
-		$(make) setup
-		$(make) open
+		@make bundle_install
+		@make mint-bootstrap
+		@make setup
+		@make open
 
 .PHONY: setup
 setup:
