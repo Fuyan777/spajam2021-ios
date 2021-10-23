@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StartView: View {    
+    @State var dateString = ""
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("2021年10月24日")
@@ -15,7 +17,7 @@ struct StartView: View {
             
             Spacer().frame(height: 10)
             
-            Text("10:00:10")
+            Text(Date(), style: .time)
                 .font(.system(size: 60, weight: .medium, design: .default))
             
             Spacer().frame(height: 100)
@@ -44,6 +46,11 @@ struct StartView: View {
             .background(Color("buttonColor"))
             .cornerRadius(16)
         }
+        .onAppear(perform: {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            print(formatter.date(from: dateString))
+        })
     }
 }
 
