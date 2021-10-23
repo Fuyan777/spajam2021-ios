@@ -23,6 +23,7 @@ final class SensorViewModel: ViewModelProtocol {
     private var cancellables = Set<AnyCancellable>()
 
     let motionManager = CMMotionManager()
+    let voice = SoundRepository()
     
     init(state: State) {
         self.state = state
@@ -61,18 +62,19 @@ final class SensorViewModel: ViewModelProtocol {
         self.state.yMotionStr = String(deviceMotion.userAcceleration.y)
         self.state.zMotionStr = String(deviceMotion.userAcceleration.z)
         
-        /// モーションの検出
         let zMotion = deviceMotion.userAcceleration.z
+        let roll = deviceMotion.attitude.roll
+        // 動作確認
+        print(roll)
 
-        if zMotion > 1.4 {
+        if zMotion > 1.2 {
             self.stop()
+            voice.playsound(name: "throw", type: "wav")
             print("投げる") //TODO: リクエストに変更
         }
-
-        let roll = deviceMotion.attitude.roll
-
         if roll < -0.7 && zMotion > 0.5 {
             self.stop()
+            voice.playsound(name: "batting", type: "mp3")
             print("打つ") //TODO: リクエストに変更
         }
     }

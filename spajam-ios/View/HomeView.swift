@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: SensorViewModel
 
     var body: some View {
         VStack {
-            Text(viewModel.state.title)
-            Text(viewModel.state.url)
-            
             Button(action: {
-                viewModel.send(.fetchData)
+                viewModel.send(.startTracking)
             }) {
                 Text("Update")
             }
@@ -25,8 +22,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: ViewModel(state: .init(title: "titleですう", url: "url")))
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(viewModel: ViewModel(state: .init(title: "titleですう", url: "url")))
+//    }
+//}
