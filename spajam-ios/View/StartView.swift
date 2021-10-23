@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct StartView: View {    
-    @State var dateString = ""
+struct StartView: View {
+    @Binding var routeType: routeType
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,6 +24,7 @@ struct StartView: View {
             
             Button(action: {
                 print("出勤")
+                routeType = .matching
             }) {
                 Text("出勤")
                     .bold()
@@ -49,11 +50,11 @@ struct StartView: View {
     }
 }
 
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView()
-    }
-}
+//struct StartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StartView()
+//    }
+//}
 
 /*
  Button(action: {

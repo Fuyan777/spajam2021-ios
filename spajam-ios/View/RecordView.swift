@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecordView: View {
+    @Binding var routeType: routeType
+    
     var body: some View {
         ZStack(alignment: .top) {
             Image("party")
@@ -64,7 +66,7 @@ struct RecordView: View {
                 Text("対戦相手とお話ししてみましょう！")
                 
                 Button(action: {
-                    print("退勤")
+                    routeType = .start
                 }) {
                     Text("終了")
                         .bold()
@@ -81,9 +83,9 @@ struct RecordView: View {
         }
     }
 }
-
-struct RecordView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordView()
-    }
-}
+//
+//struct RecordView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecordView()
+//    }
+//}

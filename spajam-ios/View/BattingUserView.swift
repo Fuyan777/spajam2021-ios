@@ -13,7 +13,12 @@ enum BattingType: CaseIterable {
 }
 
 struct BattingUserView: View {
+    @Binding var routeType: routeType
     var battingType: BattingType = .pitcher
+    
+    init(routeType: Binding<routeType>) {
+        self._routeType = routeType
+    }
     
     var body: some View {
         ZStack {
@@ -68,8 +73,8 @@ struct BattingUserView: View {
     }
 }
 
-struct BattingUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        BattingUserView()
-    }
-}
+//struct BattingUserView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BattingUserView()
+//    }
+//}
