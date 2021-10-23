@@ -7,21 +7,32 @@
 
 import SwiftUI
 
+enum MatchState {
+    case preMatch
+    case matching
+    case matched
+}
+
 struct MatchingView: View {
+    let myID = UIDevice.current.identifierForVendor?.uuidString
     @EnvironmentObject var  matchingViewModel: MatchingViewModel
-    
+    @State var count = 0
+    @State var isStartWork = false
+    @State var state: MatchState = .matching
+
     var body: some View {
         ZStack {
-            VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                Button("test", action: {
-                    self.matchingViewModel.startDiscover()
-                })
-                Button("test2", action: {
-                    self.matchingViewModel.sendString("testtesttesttest")
-                })
+            if self.matchingViewModel.emenyUUID == nil {
+                    ProgressView("打刻相手を探しています...")
+                
+            } else {
+                VStack {
+                    Text(self.matchingViewModel.emenyUUID ?? "")
+                    Text(self.matchingViewModel.isPeripheral ? "peripheral" : "central")
+                    Text("対戦相手が見つかりました")
+                }
+                
             }
-            
         }
     }
 }
