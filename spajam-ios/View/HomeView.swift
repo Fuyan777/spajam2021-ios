@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var viewModel: ViewModel
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text(viewModel.state.title)
+            Text(viewModel.state.url)
+            
+            Button(action: {
+                viewModel.send(.fetchData)
+            }) {
+                Text("Update")
+            }
+        }
+        .padding(.all, 16)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: ViewModel(state: .init(title: "titleですう", url: "url")))
     }
 }
