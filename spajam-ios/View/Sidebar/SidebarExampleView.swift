@@ -19,14 +19,17 @@ struct SidebarExampleView: View {
                         SidebarContentView(iconImage: "folder.fill", name: "Files")
                             .onTapGesture {
                                 self.count = 0
+                                self.sidebarViewModel.close()
                             }
                         SidebarContentView(iconImage: "trash", name: "Trash")
                             .onTapGesture {
                                 self.count = 1
+                                self.sidebarViewModel.close()
                             }
                         SidebarContentView(iconImage: "person.fill", name: "Profile")
                             .onTapGesture {
                                 self.count = 2
+                                self.sidebarViewModel.close()
                             }
                         Spacer()
                     }

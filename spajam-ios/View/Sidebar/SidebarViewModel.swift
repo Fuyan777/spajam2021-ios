@@ -12,9 +12,17 @@ class SidebarViewModel: ObservableObject {
         case open
         case close
     }
-    @Published var isOpen: SidebarState = .open
+    @Published var state: SidebarState = .open
+    
+    func open() {
+        self.state = .open
+    }
+    
+    func close() {
+        self.state = .close
+    }
     
     func toggleSidebar() {
-        self.isOpen = self.isOpen == .open ? .close : .open
+        self.state = self.state == .open ? .close : .open
     }
 }

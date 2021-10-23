@@ -32,8 +32,7 @@ struct SidebarView<SideBar: View, ContentView: View>: View {
                 EmptyView()
             }
             .background(Color.gray.opacity(0.3))
-            .opacity(self.sidebarViewModel.isOpen == .open ? 1.0 : 0.0)
-            .animation(.easeIn(duration: 0.3))
+            .opacity(self.sidebarViewModel.state == .open ? 1.0 : 0.0)
             .onTapGesture {
                 self.sidebarViewModel.toggleSidebar()
             }
@@ -41,11 +40,11 @@ struct SidebarView<SideBar: View, ContentView: View>: View {
             //サイドバービュー
             GeometryReader { geometry in
                 self.sideBar
-                    .animation(.default)
                     .padding(.top, 48)
                     .background(Color.gray.opacity(0.6))
                     .frame(width: geometry.size.width * self.ratio, height: geometry.size.height)
-                    .offset(x: self.sidebarViewModel.isOpen == .open ? 0: -geometry.size.width * self.ratio)
+                    .offset(x: self.sidebarViewModel.state == .open ? 0: -geometry.size.width * self.ratio)
+                    .animation(.easeIn(duration: 0.3))
                     
             }
         }
