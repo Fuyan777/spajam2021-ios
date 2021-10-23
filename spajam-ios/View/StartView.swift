@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct StartView: View {
-    //    @ObservedObject var viewModel: SensorViewModel
-
         var body: some View {
             VStack(spacing: 0) {
                 Text("2021年10月24日")
