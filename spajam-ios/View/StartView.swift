@@ -28,7 +28,7 @@ struct StartView: View {
                     .foregroundColor(.white)
                     .frame(width: 280, height: 50)
             }
-            .background(Color.blue)
+            .background(Color("buttonColor"))
             .cornerRadius(16)
             
             Spacer().frame(height: 50)
@@ -41,7 +41,7 @@ struct StartView: View {
                     .foregroundColor(.white)
                     .frame(width: 280, height: 50)
             }
-            .background(Color.blue)
+            .background(Color("buttonColor"))
             .cornerRadius(16)
         }
     }
