@@ -46,11 +46,6 @@ struct StartView: View {
             .background(Color("buttonColor"))
             .cornerRadius(16)
         }
-        .onAppear(perform: {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm:ss"
-            print(formatter.date(from: dateString))
-        })
     }
 }
 
