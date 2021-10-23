@@ -15,32 +15,31 @@ struct SidebarExampleView: View {
         ZStack {
             SidebarView(
                 sideBar: {
-                    List {
-                        Text("test")
+                    VStack {
+                        SidebarContentView(iconImage: "folder.fill", name: "Files")
                             .onTapGesture {
                                 self.count = 0
-                                self.sidebarViewModel.toggleSidebar()
                             }
-                        Text("test2")
+                        SidebarContentView(iconImage: "trash", name: "Trash")
                             .onTapGesture {
                                 self.count = 1
-                                self.sidebarViewModel.toggleSidebar()
                             }
-                        Text("test2")
+                        SidebarContentView(iconImage: "person.fill", name: "Profile")
                             .onTapGesture {
                                 self.count = 2
-                                self.sidebarViewModel.toggleSidebar()
                             }
+                        Spacer()
                     }
+                    
                 }, contentView: {
                     VStack {
                         Button("push", action: {
                             self.sidebarViewModel.toggleSidebar()
                         })
                         if (self.count == 1) {
-                                Text("Hello World1")
+                                Text("Trash")
                         } else if (self.count == 2) {
-                            Text("Hello World2")
+                            Text("Profile")
                     }
                     }
                 }
@@ -56,5 +55,6 @@ struct SidebarExampleView: View {
 struct SidebarExampleView_Previews: PreviewProvider {
     static var previews: some View {
         SidebarExampleView()
+            .environmentObject(SidebarViewModel())
     }
 }

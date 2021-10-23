@@ -42,8 +42,11 @@ struct SidebarView<SideBar: View, ContentView: View>: View {
             GeometryReader { geometry in
                 self.sideBar
                     .animation(.default)
-                    .frame(width: geometry.size.width * self.ratio)
+                    .padding(.top, 48)
+                    .background(Color.gray.opacity(0.6))
+                    .frame(width: geometry.size.width * self.ratio, height: geometry.size.height)
                     .offset(x: self.sidebarViewModel.isOpen == .open ? 0: -geometry.size.width * self.ratio)
+                    
             }
         }
         .ignoresSafeArea()
