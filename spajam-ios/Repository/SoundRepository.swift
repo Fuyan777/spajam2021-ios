@@ -1,5 +1,5 @@
 //
-//  VoiceRepository.swift
+//  SoundRepository.swift
 //  spajam-ios
 //
 //  Created by yamada fuuya on 2021/10/23.
@@ -8,11 +8,11 @@
 import Foundation
 import AVFoundation
 
-protocol VoiceRepositoryProtocol {
+protocol SoundRepositoryProtocol {
     func playsound(name: String, type: String)
 }
 
-class VoiceRepository: VoiceRepositoryProtocol {
+class SoundRepository: SoundRepositoryProtocol {
     var audioPlayer: AVAudioPlayer!
     func playsound(name: String, type: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else {
