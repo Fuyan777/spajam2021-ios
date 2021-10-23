@@ -12,6 +12,7 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
+            MatchingView()
             Text(viewModel.state.title)
             Text(viewModel.state.url)
             
