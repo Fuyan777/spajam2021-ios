@@ -15,30 +15,39 @@ enum MatchState {
 
 struct MatchingView: View {
     let myID = UIDevice.current.identifierForVendor?.uuidString
-    @EnvironmentObject var  matchingViewModel: MatchingViewModel
+    @EnvironmentObject var matchingViewModel: MatchingViewModel
+
     @State var count = 0
     @State var isStartWork = false
     @State var state: MatchState = .matching
+    
+    @Binding var routeType: routeType
+    
+    init(routeType: Binding<routeType>) {
+        self._routeType = routeType
+    }
 
     var body: some View {
         ZStack {
             if self.matchingViewModel.emenyUUID == nil {
-                    ProgressView("打刻相手を探しています...")
-                
+                ProgressView("打刻相手を探しています...")
             } else {
                 VStack {
-                    Text(self.matchingViewModel.emenyUUID ?? "")
-                    Text(self.matchingViewModel.isPeripheral ? "peripheral" : "central")
                     Text("対戦相手が見つかりました")
-                }
-                
+                    Button(action: {
+                        routeType = .batting
+                    }) {
+                        Text("はじめましょう！")
+                    }
+                }                
             }
         }
     }
 }
-
-struct MatchingView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchingView()
-    }
-}
+//
+//struct MatchingView_Previews: PreviewProvider {
+//    @State var routeType: routeType = .start
+//    static var previews: some View {
+//        MatchingView(routerType: $routeType)
+//    }
+//}

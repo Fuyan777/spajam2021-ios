@@ -9,12 +9,19 @@ import Foundation
 import CoreMotion
 import Combine
 
+enum routeType {
+    case start, matching, batting, record
+}
+
 final class SensorViewModel: ViewModelProtocol {
     struct State {
         var isStarted = false
         var xMotionStr = "0.0"
         var yMotionStr = "0.0"
         var zMotionStr = "0.0"
+        
+        var battingType: BattingType = .batter
+        var doneMotion = false
     }
 
     @Published private(set) var state: State
@@ -67,15 +74,18 @@ final class SensorViewModel: ViewModelProtocol {
         // 動作確認
         print(roll)
 
-        if zMotion > 1.2 {
+        if state.battingType == .pitcher && zMotion > 1.2 {
             self.stop()
             voice.playsound(name: "throw", type: "wav")
             print("投げる") //TODO: リクエストに変更
+            state.doneMotion = true
         }
-        if roll < -0.7 && zMotion > 0.5 {
+
+        if state.battingType == .batter && roll < -0.7 && zMotion > 0.5 {
             self.stop()
             voice.playsound(name: "batting", type: "mp3")
             print("打つ") //TODO: リクエストに変更
+            state.doneMotion = true
         }
     }
 }

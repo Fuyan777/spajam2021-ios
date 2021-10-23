@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct StartView: View {    
+struct StartView: View {
+    @Binding var routeType: routeType
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("2021年10月24日")
@@ -15,20 +17,21 @@ struct StartView: View {
             
             Spacer().frame(height: 10)
             
-            Text("10:00:10")
+            Text(Date(), style: .time)
                 .font(.system(size: 60, weight: .medium, design: .default))
             
             Spacer().frame(height: 100)
             
             Button(action: {
                 print("出勤")
+                routeType = .matching
             }) {
                 Text("出勤")
                     .bold()
                     .foregroundColor(.white)
                     .frame(width: 280, height: 50)
             }
-            .background(Color.blue)
+            .background(Color("buttonColor"))
             .cornerRadius(16)
             
             Spacer().frame(height: 50)
@@ -41,17 +44,17 @@ struct StartView: View {
                     .foregroundColor(.white)
                     .frame(width: 280, height: 50)
             }
-            .background(Color.blue)
+            .background(Color("buttonColor"))
             .cornerRadius(16)
         }
     }
 }
 
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView()
-    }
-}
+//struct StartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StartView()
+//    }
+//}
 
 /*
  Button(action: {
