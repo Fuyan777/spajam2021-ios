@@ -11,9 +11,11 @@ $ make install
 ├── spajam-ios
 │   ├── App
 │   │   ├── AppDelegate.swift
-│   │   └── SceneDelegate.swift // 現状SwiftUIベース
+│   │   └── SceneDelegate.swift
 │   ├── Info.plist
-│   ├── Resource // アセット（画像）とスプラッシュ
+│   ├── Model // Entity周り
+│   │   └── EntityModel.swift
+│   ├── Resource
 │   │   ├── Assets.xcassets
 │   │   │   ├── AccentColor.colorset
 │   │   │   │   └── Contents.json
@@ -22,10 +24,12 @@ $ make install
 │   │   │   └── Contents.json
 │   │   └── Base.lproj
 │   │       └── LaunchScreen.storyboard
-│   ├── UIKit // UIKitで作成するView
+│   ├── UIKit // UIKitベース
 │   │   ├── Base.lproj
 │   │   │   └── Main.storyboard
 │   │   └── ViewController.swift
-│   └── View // SwiftUIで作成するView
-│       └── HomeView.swift
+│   ├── View // SwiftUIベース
+│   │   └── HomeView.swift
+│   └── ViewModel // ストア、アクション、ロジック部分
+│       └── ViewModel.swift
 ```
