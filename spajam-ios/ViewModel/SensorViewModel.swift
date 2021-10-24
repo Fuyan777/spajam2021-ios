@@ -20,7 +20,7 @@ final class SensorViewModel: ViewModelProtocol {
         var yMotionStr = "0.0"
         var zMotionStr = "0.0"
         
-        var battingType: BattingType = .batter
+        var battingType: BattingType = .batter // 切り替え
         var doneMotion = false
     }
 
