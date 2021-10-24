@@ -48,7 +48,7 @@ struct HomeView: View {
                                 Text("工藤正隆 さんのターン")
                                     .font(.title2)
                             } else {
-                                Text("バッター")
+                                Text("ピッチャー")
                                     .font(.title)
                                     .bold()
                                 Text("小林澪司 さんのターン")
