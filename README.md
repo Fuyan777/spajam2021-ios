@@ -33,3 +33,9 @@ $ make install
 │   └── ViewModel // ストア、アクション、ロジック部分
 │       └── ViewModel.swift
 ```
+
+## 仕様書
+https://hackmd.io/@QexHAtZ8RkWJGOBpEEccXA/Hy2n3QbLK
+
+## スライド
+https://docs.google.com/presentation/d/1BY6pYvUcCWQ2T4TkhR1Fbp7R4G8xdDAPHiuwSA0UXgU/edit?usp=sharing
